@@ -1,0 +1,19 @@
+<!-- title -->
+<view style='display:flex; flex-direction:column; align-items:center;'>
+  <view>
+    <view style='width:200rpx; display:flex; align-items:center; justify-content:space-around'>
+      <text>总览</text>
+      <text>详情</text>
+    </view>
+    <view style='width:100rpx; height:5rpx; background:red;' animation="{{animation}}"></view>
+  </view>
+</view>
+
+<!-- page -->
+<swiper bindtransition="swiperTrans" >
+  <view wx:for="{{title}}" wx:key="*this">
+    <swiper-item>
+      {{item}}
+    </swiper-item>  
+  </view>
+</swiper>
