@@ -1,2 +1,10 @@
 <!--index.wxml-->
-<tablayout></tablayout>
+
+<tablayout titles="{{titles}}">
+  <view slot="0">swiperitem1</view>
+  <view slot="1">swiperitem2</view>
+  <view slot="2">swiperitem3</view>
+  <view slot="3">swiperitem4</view>
+</tablayout>
+
+      

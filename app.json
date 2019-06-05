@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "tablayout/tablayout"
+    "tablayout/tablayout",
+    "pages/bracelet/bracelet",
+    "pages/report/report"
   ],
   "window": {
     "backgroundTextStyle": "light",

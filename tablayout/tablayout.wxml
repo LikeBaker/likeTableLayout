@@ -1,19 +1,25 @@
 <!-- title -->
-<view style='display:flex; flex-direction:column; align-items:center;'>
+<view style='display:flex; flex-direction:column; align-items:center; background:lightgray' bindtap='clickTitle'>
   <view>
-    <view style='width:200rpx; display:flex; align-items:center; justify-content:space-around'>
-      <text>总览</text>
-      <text>详情</text>
+    <view style='display:flex; flex-direction:row; text-align:center;'><!-- 为什么 文字居中需要放在这一层-->
+      <view wx:for="{{titles}}" style='width:100rpx;  text-items:center; background:lightblue'>
+        <text style='text-items:center'>{{item}}</text>
+      </view>
     </view>
+    <!-- indicator -->
     <view style='width:100rpx; height:5rpx; background:red;' animation="{{animation}}"></view>
   </view>
 </view>
 
 <!-- page -->
-<swiper bindtransition="swiperTrans" >
-  <view wx:for="{{title}}" wx:key="*this">
-    <swiper-item>
-      {{item}}
+<swiper bindtransition="swiperTrans" bindanimationfinish="swiperAnimationfinish" bindchange='swiperChange'>
+  <view wx:for="{{titles}}" wx:key="*this">
+    <swiper-item style='background:lightgreen'>
+      <!-- <import src="../pages/bracelet/bracelet.wxml"/>
+      <template is="bracelet"></template> -->
+      
+      <slot name="{{index}}"></slot>
+
     </swiper-item>  
   </view>
 </swiper>
