@@ -20,8 +20,10 @@ Component({
    */
   data: {
 
+    //标题 swiper-item 所在位置
     titleIndex: 0,
 
+    //indiator 动画
     animation: "",
 
     //屏幕宽度 px
@@ -36,21 +38,30 @@ Component({
     //滑动状态：滑动到左边(1)、滑动到右边(2)
     scrollStatus:1,
 
-    changeIndex:1
+    changeIndex:1,
+
+    _swiperIndex:2
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    clickTitle:function(e) {
-
-      var that = this;
+    clickTitle(e) {
 
       console.log("click");
+      
+      var that = this;
+
+      console.log(e.currentTarget.dataset.index);
       that.setData({
-        changeIndex:2
+        _swiperIndex: e.currentTarget.dataset.index ? e.currentTarget.dataset.index : 0
       })
+
+      // console.log("click");
+      // that.setData({
+      //   changeIndex:2
+      // })
     },
 
     swiperChange:function(e) {
@@ -60,7 +71,9 @@ Component({
 
       var that = this;
 
-      e.detail.current = that.changeIndex;
+      that.setData({
+        _swiperIndex: e.currentTarget.dataset.index ? e.currentTarget.dataset.index : 0
+      })
     },
 
     swiperTrans:function (e) {
