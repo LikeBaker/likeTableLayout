@@ -1,0 +1,5 @@
+<!--pages/bracelet/bracelet.wxml-->
+<template name="extend">
+  <text>内容待扩展</text>
+</template>
+

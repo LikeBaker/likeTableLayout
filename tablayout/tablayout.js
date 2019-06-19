@@ -34,13 +34,14 @@ Component({
 
     //指示器滑动范围宽度，单位宽度
     indicatorLayoutWidth:100,
+    //swiper高度
+    swiperHeight:"",
 
     //滑动状态：滑动到左边(1)、滑动到右边(2)
     scrollStatus:1,
 
-    changeIndex:1,
-
-    _swiperIndex:2
+    //swiper当前位置
+    swiperIndex:0,
   },
 
   /**
@@ -48,32 +49,24 @@ Component({
    */
   methods: {
     clickTitle(e) {
-
-      console.log("click");
-      
+      //点击切换卡片
       var that = this;
 
-      console.log(e.currentTarget.dataset.index);
       that.setData({
-        _swiperIndex: e.currentTarget.dataset.index ? e.currentTarget.dataset.index : 0
-      })
-
-      // console.log("click");
-      // that.setData({
-      //   changeIndex:2
-      // })
+        swiperIndex: e.currentTarget.dataset.index
+      });
     },
 
     swiperChange:function(e) {
 
       console.log("swiperChange");
-      console.log(e.detail.curr);
+      console.log(e.current);
 
       var that = this;
 
-      that.setData({
-        _swiperIndex: e.currentTarget.dataset.index ? e.currentTarget.dataset.index : 0
-      })
+      // that.setData({
+      //   _swiperIndex: e.currentTarget.dataset.index ? e.currentTarget.dataset.index : 0
+      // })
     },
 
     swiperTrans:function (e) {
@@ -145,9 +138,10 @@ Component({
     attached() {
       // 初始化数据
       var that = this;
-      that.setData({ screenWidth: wx.getSystemInfoSync().screenWidth });
-    }
-   
+      that.setData({ 
+        screenWidth: wx.getSystemInfoSync().screenWidth ,//px
+       });
+    }   
   },
 
 })

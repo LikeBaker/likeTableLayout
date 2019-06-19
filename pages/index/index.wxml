@@ -1,17 +1,10 @@
 <!--index.wxml-->
 
-<tablayout sytle="background:blue;" titles="{{titles}}">
-  <view slot="0">swiperitem1</view>
-  <view slot="1">swiperitem2</view>
-  <view slot="2">swiperitem3</view>
-  <view slot="3">swiperitem4</view>
-</tablayout>
+<import src="../extend/extend.wxml"/>
 
-<!-- <view style="height:600rpx;margin-top:20rpx;background:lightblue">123</view> -->
-<!-- <swiper style='height:2000rpx; background:lightgray'>
-   <view wx:for="{{titles}}" wx:key="*this">
-    <swiper-item>
-      <view style="height:500px; background:lightblue" name="{{index}}">{{index}}</view>
-    </swiper-item>  
-  </view>
-</swiper> -->
+<tablayout titles="{{titles}}">
+  <view slot="0"><template is="extend"></template></view>
+  <view slot="1"><template is="extend"></template></view>
+  <view slot="2"><template is="extend"></template></view>
+  <view slot="3"><template is="extend"></template></view>
+</tablayout>
