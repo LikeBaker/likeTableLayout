@@ -1,4 +1,4 @@
-{ 
+{
   "pages": [
     "pages/index/index",
     "pages/extend/extend"
@@ -8,5 +8,6 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

@@ -37,7 +37,7 @@ Component({
     //swiper高度
     swiperHeight:"",
 
-    //滑动状态：滑动到左边(1)、滑动到右边(2)
+    //滑动状态：滑动到左边(1)、滑动到右边(2)、其他位置(0)
     scrollStatus:1,
 
     //swiper当前位置
@@ -52,28 +52,32 @@ Component({
       //点击切换卡片
       var that = this;
 
+      console.log(e.currentTarget.dataset.index);
+
       that.setData({
         swiperIndex: e.currentTarget.dataset.index
       });
     },
 
-    swiperChange:function(e) {
+    // swiperChange:function(e) {
 
-      console.log("swiperChange");
-      console.log(e.current);
+    //   console.log("swiperChange");
+    //   console.log(e.current);
 
-      var that = this;
+    //   var that = this;
 
-      // that.setData({
-      //   _swiperIndex: e.currentTarget.dataset.index ? e.currentTarget.dataset.index : 0
-      // })
-    },
+    //   // that.setData({
+    //   //   _swiperIndex: e.currentTarget.dataset.index ? e.currentTarget.dataset.index : 0
+    //   // })
+    // },
 
     swiperTrans:function (e) {
 
-      // console.log(e.detail.dx);
+      // console.log("trans " + e.detail.dx);
 
       var that = this;
+
+      console.log("scroll-status " + that.data.scrollStatus)
 
       //todo 存在dx绝对值大于屏幕宽度的情况，会导致indicator移动到固定边界外，该情况真机是否也存在？
       // swipter位移 中间变量
@@ -94,8 +98,9 @@ Component({
       var scale = (that.data.indicatorLayoutWidth / that.data.wxScreenWidth).toFixed(2);//保留两位小数，否则indicator有误差
       // console.log("scale " + scale);
       //indicator 位移
+      console.log("dx " + dx)
       var ds = dx * scale;
-      // console.log("ds " + ds);
+      console.log("ds " + ds);
 
       this.transIndicator(ds);
     },
@@ -108,6 +113,7 @@ Component({
         duration: 100,
         timingFunction: 'linear'
       };
+
       this.animation = wx.createAnimation(option);
       this.animation.translateX(x).step();
       this.setData({
@@ -130,7 +136,16 @@ Component({
       } else if (that.data.titleIndex == 0) {
         // console.log("move to the left")
         that.setData({ scrollStatus: 1 });
+      } else {
+        that.setData({ scrollStatus: 0 });
       }
+    }, 
+
+    /**
+     * current改变时，触发change事件
+     */
+    swiperChange: function(e){
+      console.log("change " + e.detail.current)
     }
   },
 
